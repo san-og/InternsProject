@@ -1,3 +1,11 @@
 <template>
-    
+    <lightning-card title="Record Detail">
+        <template if:true={record}>
+            <p><strong>Name:</strong> {record.Name}</p>
+            <p><strong>Type:</strong> {record.Type}</p>
+        </template>
+        <template if:true={error}>
+            <p>{error}</p>
+        </template>
+    </lightning-card>
 </template>

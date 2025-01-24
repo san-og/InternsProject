@@ -1,3 +1,11 @@
 <template>
-    
+    <lightning-card title="Dashboard">
+        <c-data-table
+            onrecordselect={handleRecordSelection}
+            onrefreshdata={handleDataRefresh}
+        ></c-data-table>
+        <c-record-detail 
+            record-id={selectedRecordId}
+        ></c-record-detail>
+    </lightning-card>
 </template>
