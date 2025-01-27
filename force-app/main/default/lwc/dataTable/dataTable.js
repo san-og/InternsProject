@@ -1,13 +1,13 @@
 import { LightningElement, wire } from 'lwc';
 import getRecords from '@salesforce/apex/DashboardController.getRecords';
 
-export default class BasicDatatable extends LightningElement {
+export default class DataTable extends LightningElement {
     records;
     columns = [
-        { label: 'Name', fieldName: 'name' },
-        { label: 'Site', fieldName: 'site', type: 'url' },
-        { label: 'Phone', fieldName: 'phone', type: 'phone' },
-        { label: 'AnnualRevenue', fieldName: 'AnnualRevenue', type: 'currency' },
+        { label: 'Name', fieldName: 'Name' },
+        { label: 'Site', fieldName: 'Site', type: 'url' },
+        { label: 'Phone', fieldName: 'Phone', type: 'phone' },
+        { label: 'Annual Revenue', fieldName: 'AnnualRevenue', type: 'currency' },
     ];
     
 
@@ -20,12 +20,15 @@ export default class BasicDatatable extends LightningElement {
         }
     }
 
-    handleRowAction(event) {
-        const recordId = event.detail.row.Id;
-        const recordSelectEvent = new CustomEvent('recordselect', {
-            detail: { recordId }
-        });
-        this.dispatchEvent(recordSelectEvent);
+    handleRowSelection(event) {
+        const selectedRows = event.detail.selectedRows;
+        if (selectedRows.length > 0) {
+            const recordId = selectedRows[0].Id;
+            const recordSelectEvent = new CustomEvent('recordselect', {
+                detail: { recordId }
+            });
+            this.dispatchEvent(recordSelectEvent);
+        }
     }
 
     refreshData() {

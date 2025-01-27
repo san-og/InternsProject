@@ -5,6 +5,7 @@ export default class Dashboard extends LightningElement {
 
     handleRecordSelection(event) {
         this.selectedRecordId = event.detail.recordId;
+        console.log('Selected Record ID:', this.selectedRecordId);
         
     }
 

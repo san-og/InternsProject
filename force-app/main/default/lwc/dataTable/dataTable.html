@@ -1,15 +1,14 @@
 <template>
-    <div style="height: 300px;">
+    <div style="height: 500px;">
         <lightning-datatable
                 key-field="id"
-                data={data}
+                data={records}
                 columns={columns}
-                onrowaction={handleRowAction}
-                hide-checkbox-column
-                default-sort-direction={defaultSortDirection}
-                sorted-direction={sortDirection}
-                sorted-by={sortedBy}
-                onsort={onHandleSort}>
+                max-row-selection=1
+                onrowselection={handleRowSelection}
+                >
         </lightning-datatable>
     </div>
 </template>
+
+<!--{onrowaction={handleRowAction}-->
